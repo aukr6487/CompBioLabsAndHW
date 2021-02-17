@@ -12,7 +12,7 @@ for (i in 1:hiTimes){
 }
 
 # Step 2
-# For loop calcuating the total amount of money Tim has
+# For loop calculating the total amount of money Tim has
 piggyBank <- 10 # dollars
 allowance <- 5 # dollars per week
 expenses <- 2 * 1.34 # dollars per week
@@ -102,4 +102,64 @@ for (i in 2:timeStep){
 # plot population abundance over time
 plot(time, abundance)
 
+# Part III # ... my attempts 
 
+# Step 8a
+# Reading in CO2_data_cut_paste.csv
+setwd('~/Desktop/Classes/EBIO_5420/CompBioLabsAndHW/Lab04')
+CO2_Data <- read.csv("CO2_data_cut_paste.csv")
+
+# Step 8b 
+
+# Trying to change data from "integer" to "numeric the first way
+CO2_Data2 <- read.csv("CO2_data_cut_paste.csv", colClasses=c("integer", rep("numeric",7)))
+# lapply(CO2_Data2, class)
+# I used the above command ^ to check that I was able to complete this
+
+# Trying to change data from "integer" to "numeric the second way
+CO2_Data3 <- read.csv("CO2_data_cut_paste.csv")
+for (i in 2:8) {
+  CO2_Data3[,i] <- as.numeric(CO2_Data3[,i])
+}
+# lapply(CO2_Data3, class)
+# I used this command agan to check that it was correct. 
+
+# Step 8c 
+# How to calculate percent change: 
+# Increase = New Number - Original Number
+# Percent change = Increase / Original Number * 100
+
+# First way to calculate percent change... I don't actually know if this is the first way. 
+
+# Define variables and data.frame 
+Columns <- 7 # number of columns minus "Years"
+Rows <- 263
+Increase <- rep(0, Columns) # Create array to contain "Increase" calculation of Year i from Year i-1
+PercentChange <- data.frame(matrix(ncol = Columns, nrow = Rows)) # Create matrix size of CO2_Data matrix
+Names <- c("Total", "Gas", "Liquids", "Solids", "CementProduction", "GasFlaring", "PerCapita") # Create array of column names
+colnames(PercentChange) <- Names # Name columns 
+
+# For loop calculating percent change 
+for (i in 2:Rows) {
+  Increase <- CO2_Data2[i, 2:8] - CO2_Data2[i-1, 2:8]
+  PercentChange[i, ] <- Increase / CO2_Data2[i-1, 2:8] * 100
+}
+
+# Second way to calculate percent change
+
+# Define variables and data.frame
+PercentChange2 <- data.frame(matrix(ncol = Columns, nrow = Rows)) # Create matrix size of CO2_Data matrix
+colnames(PercentChange2) <- Names # Name columns 
+
+# Nested for loop calculating percent change
+for(i in 2:Rows){
+  for(c in 2:8){
+    Increase <- CO2_Data3[i, c] - CO2_Data3[i-1, c]
+    PercentChange2[i, c] <- Increase / CO2_Data3[i-1, c] * 100
+  }
+}
+PercentChange2$V8 <- NULL # I don't know why there's an extra column at the end 
+
+# Check that they are the same 
+all(PercentChange == PercentChange2) 
+# they are not the same... 
