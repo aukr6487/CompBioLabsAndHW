@@ -116,9 +116,9 @@ write.csv(x = myResults, file = "PredPreyResults.csv")
 # Define new variables 
 initPrey <- seq(from = 10, to = 100, by = 10) 	# various initial prey abundances at time t = 1
 
-AbundanceOfPredators[1] <- initPred # AbundanceOfPredators at time = 1
 # For loop, looping through different initPrey values 
 for (l in 1:length(initPrey)) { 
+  AbundanceOfPredators[1] <- initPred # re-initialize AbundanceOfPredators at time = 1 
   AbundanceOfPrey[1] <- initPrey[l] # AbundanceOfPrey at time t = 1 
   # For loop of Lotka-Volterra Predator-Prey Model, starting at t = 2
   for (i in 2:totalGenerations) {
