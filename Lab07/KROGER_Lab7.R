@@ -10,7 +10,7 @@ triangleArea( 3, 4)
 
 # Problem 2 - function that returns absolute value of numbers
 myAbs <- function(number) {
-  ifelse (number >= 0, number, -1*number)
+  return( ifelse (number >= 0, number, -1*number) )
   # if number is greater or equal to 0, return the number. if not, return -1*number
 }
 myAbs(5)
@@ -72,7 +72,7 @@ printFib <- function(n, start) {
 # Problem 4a
 # function calculating the square difference of two numbers x and y
 squareDiff <- function(x, y){
-  return( abs( (x - y) ^ 2 ) )
+  return( myAbs( (x - y) ^ 2 ) )
 }
 squareDiff(3, 5)
 squareDiff(c(2, 4, 6), 4)
