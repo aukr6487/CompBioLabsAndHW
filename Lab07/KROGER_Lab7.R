@@ -22,11 +22,11 @@ printFib <- function(n, start) {
   # Checking for invalid input arguments 
   if (n <= 0 ){
     print("Error: Invalid input. Please enter n > 0. Will return NULL")
-    return()
+    return() # Return NA to leave function 
   }
   if (start != 0 & start != 1) {
     print("Error: Invalid input. Please enter start = 1 or 0. Will return NULL.")
-    return()
+    return() # Return NA to leave function 
   }
   
   # n == 2 and start == 1 or 0
