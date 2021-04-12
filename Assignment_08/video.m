@@ -6,9 +6,9 @@ clear;  % Erase all existing variables. Or clearvars if you want.
 
 % Specify input video file name.
 folder = pwd;
-% baseFileName = 'mmc2.avi';
+baseFileName = 'mmc2.avi';
 % baseFileName = 'mmc3.avi';
-baseFileName = 'mmc4.avi';
+% baseFileName = 'mmc4.avi';
 fullFileName = fullfile(folder, baseFileName);
 
 % Instantiate a video reader object for this video.
@@ -25,7 +25,7 @@ for x = 1 : numberOfFrames
 Sx = num2str(x);
 Strc = strcat(Sx, ST);
 Vid = vid(:, :, :, x);
-cd frames4
+cd frames2
 % imwrite(Vid, Strc);
 cd ..
 end
@@ -35,7 +35,7 @@ for x = 1 : numberOfFrames
     
 Sx = num2str(x);
 Strc = strcat(Sx, ST);
-cd frames4
+cd frames2
 [X, map] = imread(Strc);
 imshow(X, map)
 
@@ -55,7 +55,7 @@ end
 hold off
 
 cd ..
-cd centroids4
+cd centroids2
 writetable(struct2table(s), ['centroids_' num2str(Sx) '.csv'])
 cd ..
 end
