@@ -1,5 +1,5 @@
 % Referenced code from https://www.geeksforgeeks.org/how-to-extract-frames-from-a-video-in-matlab/
-
+% and https://blogs.mathworks.com/steve/2009/11/20/extracting-dot-locations-from-a-graphic/
 clc;    % Clear the command window.
 close all;  % Close all figures (except those of imtool.)
 clear;  % Erase all existing variables. Or clearvars if you want.
@@ -26,7 +26,7 @@ Sx = num2str(x);
 Strc = strcat(Sx, ST);
 Vid = vid(:, :, :, x);
 cd frames4
-imwrite(Vid, Strc);
+% imwrite(Vid, Strc);
 cd ..
 end
 
