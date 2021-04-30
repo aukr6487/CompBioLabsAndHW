@@ -20,7 +20,7 @@ only the command “bring them home”. The sheepdog and all of the sheep were g
 
 From the position information, the researchers calculated the flock's center, the dog's distance from this flock center at each second, and the distance of all of the sheep from this flock center at each second. This paper also coined a term "flock cohesion" which they defined as the mean of all sheep distances from the flock center (King, 2012). The authors then created an equation based model, modeling change in flock cohesion (x) over time. "This equation implies that once the dog approaches within some distance d of the flock centroid, the sheep begin to aggregate with rate s, until the distance between the sheep is comparable to x0" (King, 2012). 
 
-![Equation](https://github.com/aukr6487/CompBioLabsAndHS/blob/master/Assignment_09/equation.png)
+![Equation](https://github.com/aukr6487/CompBioLabsAndHW/blob/master/Assignment_09/equation.png)
 
 
 #### What YOU did with the data and how you did it. 
