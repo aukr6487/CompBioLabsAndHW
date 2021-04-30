@@ -242,8 +242,37 @@ library("gridExtra")
 grid.arrange(p, p2, p3, ncol = 1, nrow = 3) 
 
 # Where does the biggest change in flock cohesion occur? 
-change_in_flock <- flock cohesion %>%
-  
+# I noticed a big change in flock cohesion occur right before the 50 frame mark
+# so I am interested in before the 50 frame mark but after the 25 frame mark 
+from <- 25
+to <- 50
+max <- 0
+index <- 0
+for (i in from:to) {
+  distance <- flock_cohesion[i+1, 2] - flock_cohesion[i, 2]
+  if( distance > max) {
+    max <- distance
+    index <- i
+  }
+}
+max
+index
 
+# I tried this again, looking before 48 to see when more jumps occured in flock cohesion
+from <- 25
+to <- 45
+max <- 0
+index <- 0
+for (i in from:to) {
+  distance <- flock_cohesion[i+1, 2] - flock_cohesion[i, 2]
+  if( distance > max) {
+    max <- distance
+    index <- i
+  }
+}
+max 
+index
 
-
+# This is the distance the sheepdog is from the flock center when they begin to cluster.
+# This can be done with either value of index above. 
+begin_cluster <- sheep_distance[index, 1]
